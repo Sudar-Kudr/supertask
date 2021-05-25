@@ -6,7 +6,7 @@ HunterGate(
         SHA1 "5659b15dc0884d4b03dbd95710e6a1fa0fc3258d"
 )
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(BUILD_TESTS "Build tests" ON)
