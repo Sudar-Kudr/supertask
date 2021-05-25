@@ -3,6 +3,6 @@
 #include <cmath>
 #include <iostream>
 
-double DOcos(int val);
+double DOcos(double val);
   
 #endif //COS_H
