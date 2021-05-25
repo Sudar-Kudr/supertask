@@ -1,8 +1,8 @@
-#include "sqrt.h"
+#include "cos.h"
 #include <iostream>
 #include <cmath>
 
-double DOsqrt(double val)
+double DOcos(int val)
 {
     double result;
     result=sqrt(val);
