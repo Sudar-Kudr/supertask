@@ -11,12 +11,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(BUILD_TESTS "Build tests" ON)
 
-project(sqrt)
+project(cos)
 
 hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
 
-add_library(${PROJECT_NAME} STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/sqrt.cpp)
+add_library(${PROJECT_NAME} STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/cos.cpp)
 
 add_executable(demo
         ${CMAKE_CURRENT_SOURCE_DIR}/examples/demo.cpp
