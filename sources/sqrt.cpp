@@ -1,9 +1,8 @@
 #include "sqrt.h"
-#include <sstream>
 #include <iostream>
 #include <cmath>
 
-float DOsqrt(int val)
+double DOsqrt(double val)
 {
     float result;
     result=sqrt(val);
