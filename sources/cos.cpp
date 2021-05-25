@@ -5,7 +5,7 @@
 double DOcos(double val)
 {
     double result;
-    if ( X == 90){
+    if ( val == 90){
         result=1;
     } else {
         result=cos(val * M_PI / 180);
