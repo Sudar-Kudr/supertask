@@ -1,6 +1,7 @@
-language: generic
-services:
-  - docker
-  
+language: cpp
 script:
-  - docker build -t logger .
+- cmake -H. -B_build -DCMAKE_INSTALL_PREFIX=_install -DBUILD_TESTS=ON
+- cmake --build _build --target install
+- cmake --build _build --target test -- ARGS=--verbose
+- cmake -H. -B_build -DCPACK_GENERATOR="TGZ"
+- cmake --build _build --target package
