@@ -4,7 +4,7 @@
 
 double DOsqrt(double val)
 {
-    float result;
+    double result;
     result=sqrt(val);
     return result;
 }
