@@ -3,6 +3,6 @@
 #include <cmath>
 #include <iostream>
 
-float DOsqrt(int val);
+double DOsqrt(double val);
   
 #endif //SQRT_H
