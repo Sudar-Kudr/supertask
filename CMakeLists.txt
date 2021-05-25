@@ -14,45 +14,31 @@ include("cmake/HunterGate.cmake")
 
 
 project(sqrt)
-set(SQRT_VERSION_MAJOR 0)
-set(SQRT_VERSION_MINOR 1)
-set(SQRT_VERSION_PATCH 0)
-set(SQRT_VERSION_TWEAK 0)
-set(SQRT_VERSION
-        ${SQRT_VERSION_MAJOR}.${SQRT_VERSION_MINOR}.${SQRT_VERSION_PATCH}.${SQRT_VERSION_TWEAK})
-set(SQRT_VERSION_STRING "v${SQRT_VERSION}")
 
 hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
 
-add_library(sqrt STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/sqrt.cpp)
-        
-target_include_directories(sqrt PUBLIC
-                           $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-                           $<INSTALL_INTERFACE:include>
-                           )
+add_library(${PROJECT_NAME} STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/sqrt.cpp)
 
-if (BUILD_EXAMPLES)
-file(GLOB EXAMPLE_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/examples/*.cpp")
-foreach (EXAMPLE_SOURCE ${EXAMPLE_SOURCES})
-get_filename_component(EXAMPLE_NAME ${EXAMPLE_SOURCE} NAME_WE)
-add_executable(${EXAMPLE_NAME} ${EXAMPLE_SOURCE})
-target_link_libraries(${EXAMPLE_NAME} sqrt)
-install(TARGETS ${EXAMPLE_NAME}
-        RUNTIME DESTINATION bin
+add_executable(demo
+        ${CMAKE_CURRENT_SOURCE_DIR}/examples/demo.cpp
         )
-endforeach (EXAMPLE_SOURCE ${EXAMPLE_SOURCES})
-endif ()
 
-install(TARGETS sqrt
-        EXPORT sqrt-config
+target_include_directories(${PROJECT_NAME} PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+        )
+
+target_link_libraries(demo ${PROJECT_NAME})
+
+install(TARGETS ${PROJECT_NAME}
+        EXPORT ${PROJECT_NAME}-config
         ARCHIVE DESTINATION lib
         LIBRARY DESTINATION lib
         )
 
-
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ DESTINATION include)
-install(EXPORT sqrt-config DESTINATION cmake)
+install(EXPORT ${PROJECT_NAME}-config DESTINATION cmake)
 
 if(BUILD_TESTS)
     enable_testing()
@@ -62,4 +48,5 @@ if(BUILD_TESTS)
     add_test(NAME check COMMAND check)
 endif()
 
+include(CPack)
 include(CPackConfig.cmake)
