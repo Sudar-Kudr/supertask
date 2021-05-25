@@ -1,6 +1,6 @@
-#include "sqrt.h"
+#include "cos.h"
 #include <gtest/gtest.h>
 
-TEST(sqrt, test) {
-  EXPECT_EQ(DOsqrt(9), 3);
+TEST(cos, test) {
+  EXPECT_EQ(DOcos(9), 3);
 }
