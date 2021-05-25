@@ -2,5 +2,5 @@
 #include <gtest/gtest.h>
 
 TEST(cos, test) {
-  EXPECT_EQ(DOcos(9), 3);
+  EXPECT_EQ(DOcos(60), 0.5);
 }
