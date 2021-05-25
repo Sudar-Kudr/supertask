@@ -2,9 +2,14 @@
 #include <iostream>
 #include <cmath>
 
-double DOcos(int val)
+double DOcos(double val)
 {
     double result;
-    result=sqrt(val);
+    result=cos(val * M_PI / 180);
+    if ( X == 90){
+        result=1;
+    } else {
+        result=cos(val * M_PI / 180);
+    }
     return result;
 }
